@@ -4,8 +4,9 @@ public class ArrayMethods4 {
 	public static void main(String[]args)
 	{
 		int[] list1 = {1,5,0,6,2,3,0};
-		 quickSort(list1,0,list1.length-1);
+		customSort(list1);
 		printarr(list1);
+		
 	}
 	public static void printarr(int[]list1)
 	{
@@ -56,9 +57,25 @@ public class ArrayMethods4 {
 	 
 	        return i+1;
 	    }
-	public static void customSort()
+	/*It is a shell sort
+	 * i sea it works 
+	 * we shell test it :3 */
+
+	public static void customSort(int[] arr)
 	{
-		
+		int n = arr.length;
+        for (int gap = n/2; gap > 0; gap /= 2)
+        {    
+            for (int i = gap; i < n; i += 1)
+            {
+                int temp = arr[i];
+                int j;
+                for (j = i; j >= gap && arr[j - gap] > temp; j -= gap)
+                    arr[j] = arr[j - gap];
+ 
+                arr[j] = temp;
+            }
+        }
 	}
 }
 
